@@ -2,7 +2,7 @@ import json
 import requests
 
 import copy
-def generateSudoku():
+def generateSudoku(level):
     ''' 
     generate sudoku
     '''
