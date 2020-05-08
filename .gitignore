@@ -1,2 +1,3 @@
-__pycache__
-client/__pycache__
+client/client.pyc
+__pycache__/
+client/__pycache__/
