@@ -25,7 +25,7 @@ $ ./sudoku
 
 ```
 $ cd $GOPATH/src/github.com/alaouibs/sudoku/
-$ python client/main.py
+$ python3 client/main.py
 ```
 ## How does it work?
 

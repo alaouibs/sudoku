@@ -5,7 +5,7 @@ class ClientSide(unittest.TestCase):
     def test_Sudoku(self):
         N = 3
         sudokus = [client.generateSudoku() for k in range(0, N)]
-        result = client.resolveSudoku(sudokus)  
+        result = client.resolveSudoku([sudoku[1] for sudoku in sudokus])  
         for i in range(0, len(result)):
             if result[i] != None:
                 for j in range(0, 9):
