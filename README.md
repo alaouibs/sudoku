@@ -1,7 +1,7 @@
 # Sudoku solver 
 
-HTTP Server REST in Golang to solve Sudoku
-Implementation of a client python to send one or more sudokus to the server. 
+HTTP Server REST in Golang to solve Sudoku. 
+Implementation of a Python client to send one or more sudokus to the server. 
 
 ## Installation
 
@@ -29,4 +29,4 @@ $ python client/main.py
 ```
 ## How does it work?
 
-The solver uses [backtracking](https://en.wikipedia.org/wiki/Backtracking#Examples) and recursion to find a solution
+The solver uses backtracking and recursion to find a solution
