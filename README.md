@@ -1,7 +1,7 @@
 # Sudoku solver 
 
 HTTP Server REST in Golang to solve Sudoku. 
-Implementation of a Python client to send one or more sudokus to the server. 
+Implementation of a Python client to send one or more Sudoku to the server. 
 
 ## Installation
 
