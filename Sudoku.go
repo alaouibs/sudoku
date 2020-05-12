@@ -1,7 +1,5 @@
 package main
 
-import "time"
-
 type Board struct {
 	Board   [9][9]int
 	Success bool
@@ -61,8 +59,7 @@ func (board *Board) isPosibleToSolve() bool {
 	return true
 }
 
-func (board *Board) solve() (bool, int64) {
-	startNanos := time.Now().UnixNano()
+func (board *Board) solve() bool {
 	for row := 0; row < 9; row++ {
 		for column := 0; column < 9; column++ {
 			if board.Board[row][column] == 0 {
@@ -70,22 +67,19 @@ func (board *Board) solve() (bool, int64) {
 					if board.isNumberPosible(row, column, posibleNumber) {
 						board.Board[row][column] = posibleNumber
 
-						if solveYes, _ := board.solve(); !solveYes {
+						if !board.solve() {
 							board.Board[row][column] = 0
 						} else {
-							millieTaken := (time.Now().UnixNano() - startNanos) / int64(time.Millisecond)
 							board.Success = true
-							return true, millieTaken
+							return true
 						}
 					}
 				}
-				millieTaken := (time.Now().UnixNano() - startNanos) / int64(time.Millisecond)
 				board.Success = false
-				return false, millieTaken
+				return false
 			}
 		}
 	}
-	millieTaken := (time.Now().UnixNano() - startNanos) / int64(time.Millisecond)
 	board.Success = true
-	return true, millieTaken
+	return true
 }

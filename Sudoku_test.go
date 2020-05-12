@@ -93,7 +93,7 @@ func TestBoard_Backtrack(t *testing.T) {
 	} {
 		// create copy the board since Backtrack() modifies the orignal values
 		copy := copyBoard(check.board.Board)
-		if solveYes, _ := copy.solve(); !solveYes || !reflect.DeepEqual(copy.Board, check.expect.Board) {
+		if !copy.solve() || !reflect.DeepEqual(copy.Board, check.expect.Board) {
 			t.Errorf("[%d] the given board wasn't solved as expected", i)
 		}
 	}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 func sudoku(w http.ResponseWriter, r *http.Request) {
@@ -21,8 +22,10 @@ func sudoku(w http.ResponseWriter, r *http.Request) {
 	}
 	for i := 0; i < len(Boards); i++ {
 		if Boards[i].isPosibleToSolve() {
-			_, trace := Boards[i].solve()
-			fmt.Printf("Sudoku number %v solved in %v milliseconds\n", i, trace)
+			startNanos := time.Now().UnixNano()
+			Boards[i].solve()
+			millieTaken := time.Duration(time.Now().UnixNano()-startNanos) / time.Microsecond
+			fmt.Printf("Sudoku number %v solved in %v milliseconds\n", i, millieTaken)
 		}
 	}
 	json.NewEncoder(w).Encode(Boards)
