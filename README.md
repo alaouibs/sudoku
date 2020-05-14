@@ -17,7 +17,7 @@ $ git clone https://github.com/alaouibs/sudoku.git
 
 ```
 $ cd $GOPATH
-$ git build github.com/alaouibs/sudoku/
+$ go build github.com/alaouibs/sudoku/
 $ ./sudoku
 ```
 
