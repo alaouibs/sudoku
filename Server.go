@@ -8,6 +8,11 @@ import (
 	"time"
 )
 
+func handleRequests() {
+	http.HandleFunc("/sudoku", sudoku)
+	log.Fatal(http.ListenAndServe(":10000", nil))
+}
+
 func sudoku(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("------")
 	var Boards []Board
@@ -29,11 +34,6 @@ func sudoku(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	json.NewEncoder(w).Encode(Boards)
-}
-
-func handleRequests() {
-	http.HandleFunc("/sudoku", sudoku)
-	log.Fatal(http.ListenAndServe(":10000", nil))
 }
 
 func main() {

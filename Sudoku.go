@@ -6,18 +6,18 @@ type Board struct {
 	Success   bool
 }
 
-func (board *Board) isNumberInRow(currRow int, currColumn int, posibleNumber int) bool {
-	for column := 0; column < 9; column++ {
-		if (column != currColumn) && (board.Board[currRow][column] == posibleNumber) {
+func (board *Board) isNumberInColumn(currRow int, currColumn int, posibleNumber int) bool {
+	for row := 0; row < 9; row++ {
+		if (row != currRow) && (board.Board[row][currColumn] == posibleNumber) {
 			return true
 		}
 	}
 	return false
 }
 
-func (board *Board) isNumberInColumn(currRow int, currColumn int, posibleNumber int) bool {
-	for row := 0; row < 9; row++ {
-		if (row != currRow) && (board.Board[row][currColumn] == posibleNumber) {
+func (board *Board) isNumberInRow(currRow int, currColumn int, posibleNumber int) bool {
+	for column := 0; column < 9; column++ {
+		if (column != currColumn) && (board.Board[currRow][column] == posibleNumber) {
 			return true
 		}
 	}

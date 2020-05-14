@@ -2,6 +2,21 @@ import json
 import requests
 
 import copy
+
+def resolveSudoku(sudokus):
+    ''' 
+    Solves a List or Sudoku by asking a Server
+    '''
+    r = requests.post('http://localhost:10000/sudoku', json=[{"Board": sudoku, "Success": False, "Backtrack": 0} for sudoku in sudokus])
+    result = r.json()
+
+    for i in range(0, len(result)):
+        if result[i]['Success']:
+            result[i] = result[i]['Board']
+        else:
+            result[i] = None
+    return result
+    
 def generateSudoku():
     ''' 
     generate sudoku
@@ -29,16 +44,4 @@ def generateSudoku():
         board[p//side][p%side] = 0
     return excepted, board
 
-def resolveSudoku(sudokus):
-    ''' 
-    Solves a List or Sudoku by asking a Server
-    '''
-    r = requests.post('http://localhost:10000/sudoku', json=[{"Board": sudoku, "Success": False, "Backtrack": 0} for sudoku in sudokus])
-    result = r.json()
-
-    for i in range(0, len(result)):
-        if result[i]['Success']:
-            result[i] = result[i]['Board']
-        else:
-            result[i] = None
-    return result
+#
