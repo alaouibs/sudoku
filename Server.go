@@ -25,7 +25,7 @@ func sudoku(w http.ResponseWriter, r *http.Request) {
 			startNanos := time.Now().UnixNano()
 			Boards[i].solve()
 			millieTaken := time.Duration(time.Now().UnixNano()-startNanos) / time.Microsecond
-			fmt.Printf("Sudoku number %v solved in %v milliseconds\n", i, millieTaken)
+			fmt.Printf("Sudoku number %v solved in %v and %v backtrackings\n", i, millieTaken, Boards[i].Backtrack)
 		}
 	}
 	json.NewEncoder(w).Encode(Boards)

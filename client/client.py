@@ -33,7 +33,7 @@ def resolveSudoku(sudokus):
     ''' 
     Solves a List or Sudoku by asking a Server
     '''
-    r = requests.post('http://localhost:10000/sudoku', json=[{"Board": sudoku, "Success": False} for sudoku in sudokus])
+    r = requests.post('http://localhost:10000/sudoku', json=[{"Board": sudoku, "Success": False, "Backtrack": 0} for sudoku in sudokus])
     result = r.json()
 
     for i in range(0, len(result)):

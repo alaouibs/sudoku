@@ -1,8 +1,9 @@
 package main
 
 type Board struct {
-	Board   [9][9]int
-	Success bool
+	Board     [9][9]int
+	Backtrack int
+	Success   bool
 }
 
 func (board *Board) isNumberInRow(currRow int, currColumn int, posibleNumber int) bool {
@@ -68,6 +69,7 @@ func (board *Board) solve() bool {
 						board.Board[row][column] = posibleNumber
 
 						if !board.solve() {
+							board.Backtrack++
 							board.Board[row][column] = 0
 						} else {
 							board.Success = true
